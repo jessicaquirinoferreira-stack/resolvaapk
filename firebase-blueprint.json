@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document in /users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["client", "partner", "admin"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "role"]
+    },
+    "Partner": {
+      "title": "Partner",
+      "description": "Service partner and professional profile in /partners",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "status": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "completedJobs": { "type": "number" }
+      },
+      "required": ["id", "name"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Client booking or service order in /orders",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "partnerId": { "type": "string" },
+        "partnerName": { "type": "string" },
+        "serviceTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "totalPrice": { "type": "number" },
+        "date": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["status", "createdAt"]
+    },
+    "SiteSetting": {
+      "title": "SiteSetting",
+      "description": "Global website configuration in /siteSettings",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "email": { "type": "string" }
+      }
+    },
+    "SocialLinks": {
+      "title": "SocialLinks",
+      "description": "Official social links in /socialLinks",
+      "type": "object",
+      "properties": {
+        "instagram": { "type": "string" },
+        "facebook": { "type": "string" },
+        "whatsapp": { "type": "string" }
+      }
+    },
+    "AccessLog": {
+      "title": "AccessLog",
+      "description": "Security audit access event in /accessLogs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "action": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["action", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/partners/{partnerId}": {
+      "schema": "Partner",
+      "description": "Registered professionals and partners"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Real-time client orders and bookings"
+    },
+    "/siteSettings/{settingId}": {
+      "schema": "SiteSetting",
+      "description": "Site and system global settings"
+    },
+    "/socialLinks/{linkId}": {
+      "schema": "SocialLinks",
+      "description": "Social media links"
+    },
+    "/accessLogs/{logId}": {
+      "schema": "AccessLog",
+      "description": "Access and audit logs"
+    },
+    "/services/{serviceId}": {
+      "schema": "object",
+      "description": "Catalog of available services"
+    },
+    "/serviceCategories/{categoryId}": {
+      "schema": "object",
+      "description": "Catalog categories"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "object",
+      "description": "Customer reviews"
+    },
+    "/customRequests/{requestId}": {
+      "schema": "object",
+      "description": "Custom custom-quote requests"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "object",
+      "description": "System and user notifications"
+    }
+  }
+}

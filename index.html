@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Resolva Facil - Serviços para o Lar</title>
+    <meta name="description" content="Aplicativo de serviços para o lar e reparações Resolva Facil. Limpeza, canalização, eletricidade, montagem e reparações." />
+    <meta property="og:title" content="Resolva Facil - Serviços para o Lar" />
+    <meta property="og:description" content="Aplicativo de serviços para o lar e reparações Resolva Facil. Limpeza, canalização, eletricidade, montagem e reparações." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Proteção Anti-Cópia, Anti-IA e Anti-Raspagem -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noai, noimageai" />
+    <meta name="bingbot" content="nocache, noarchive" />
+    <meta name="ai-content-declaration" content="no-ai-training, no-ai-scrape, no-ai-derivative" />
+    <meta name="tdm-reservation" content="1" />
+    <meta name="copyright" content="Resolva Fácil © Todos os direitos reservados. Cópia e raspagem de dados por humanos ou IA são expressamente proibidas." />
+    
+    <meta name="theme-color" content="#0F485B" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Resolva Facil" />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased select-none selection:bg-teal-700 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Clear any stale cached service workers and cache storage from older builds
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for (var registration of registrations) {
+            registration.unregister();
+          }
+        }).catch(function() {});
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (var name of names) {
+            caches.delete(name);
+          }
+        }).catch(function() {});
+      }
+    </script>
+  </body>
+</html>
+

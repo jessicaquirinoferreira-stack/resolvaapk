@@ -1,0 +1,6 @@
+{
+  "name": "Resolva Facil",
+  "description": "Aplicativo de serviços para o lar e reparações Resolva Facil. Limpeza, canalização, eletricidade, montagem e reparações.",
+  "requestFramePermissions": ["geolocation", "notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'admin@resolvafacil.pt' ||
+        request.auth.token.email == 'admin@obrafacil.pt' ||
+        request.auth.token.email == 'admin@obrafacil.com' ||
+        request.auth.token.email == 'resolvafacil@x.com' ||
+        request.auth.token.email == 'jessicaq2204@gmail.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    // Official Collections Synchronized with the Website
+
+    // 1. Users Collection
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // 2. Partners Collection
+    match /partners/{partnerId} {
+      allow read, write: if true;
+    }
+
+    // 3. Orders Collection (Real-Time Synchronized)
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // 4. Access Logs
+    match /accessLogs/{logId} {
+      allow read, write: if true;
+    }
+
+    // 5. Site Settings & Social Links
+    match /siteSettings/{settingId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /socialLinks/{linkId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // 6. Catalog: Services & Categories
+    match /services/{id} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /serviceCategories/{id} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // 7. Reviews, Bookings & Custom Requests
+    match /reviews/{id} {
+      allow read, write: if true;
+    }
+
+    match /bookings/{bookingId} {
+      allow read, write: if true;
+    }
+
+    match /customRequests/{requestId} {
+      allow read, write: if true;
+    }
+
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    match /addresses/{addressId} {
+      allow read, write: if true;
+    }
+
+    match /adminReports/{reportId} {
+      allow read, write: if true;
+    }
+
+    match /appSettings/{settingId} {
+      allow read, write: if true;
+    }
+  }
+}
